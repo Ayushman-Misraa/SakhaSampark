@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Responsive Test - Sakha Sampark</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #667eea;
+        }
+        .device-frame {
+            border: 2px solid #ddd;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .device-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        .feature {
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .feature:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sakha Sampark Responsive Design</h1>
+        <p>The chat interface has been optimized for various device sizes:</p>
+        
+        <div class="device-frame">
+            <div class="device-title">Mobile Phones (Portrait)</div>
+            <div class="feature">Full-screen chat interface with dropdown menu</div>
+            <div class="feature">Contacts accessible via bottom-right button</div>
+            <div class="feature">Swipe gestures to open/close contacts sidebar</div>
+            <div class="feature">Optimized chat bubbles and input area</div>
+            <div class="feature">Theme selector in dropdown menu</div>
+            <div class="feature">Quick access to settings and logout</div>
+        </div>
+        
+        <div class="device-frame">
+            <div class="device-title">Tablets</div>
+            <div class="feature">Responsive sidebar with toggle option</div>
+            <div class="feature">Optimized for both portrait and landscape orientations</div>
+            <div class="feature">Improved touch targets for better usability</div>
+            <div class="feature">Balanced layout for medium-sized screens</div>
+        </div>
+        
+        <div class="device-frame">
+            <div class="device-title">Mobile Phones (Landscape)</div>
+            <div class="feature">Optimized layout for limited vertical space</div>
+            <div class="feature">Scrollable sidebar and chat area</div>
+            <div class="feature">Compact header and input areas</div>
+        </div>
+        
+        <div class="device-frame">
+            <div class="device-title">Special Considerations</div>
+            <div class="feature">Fixed iOS Safari viewport height issues</div>
+            <div class="feature">Improved accessibility for touch interfaces</div>
+            <div class="feature">Optimized for different pixel densities</div>
+            <div class="feature">Smooth animations and transitions</div>
+        </div>
+        
+        <a href="chat.html" class="button">Go to Chat Interface</a>
+    </div>
+</body>
+</html>

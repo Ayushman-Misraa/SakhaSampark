@@ -1,0 +1,501 @@
+/* Responsive Styles for Sakha Sampark */
+
+/* Base Mobile Styles */
+@media (max-width: 992px) {
+    /* Adjust body padding for mobile */
+    body {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    /* Make chat container full screen on mobile */
+    .chat-container {
+        max-width: 100%;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    /* Mobile Header with Dropdown Menu */
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        background: linear-gradient(135deg, rgba(118, 75, 162, 0.9), rgba(102, 126, 234, 0.9));
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-header-title {
+        font-weight: bold;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .mobile-header-title i {
+        font-size: 20px;
+    }
+
+    .mobile-menu-toggle {
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-dropdown-menu {
+        position: fixed;
+        top: 50px;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        width: 200px;
+        border-radius: 0 0 0 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+    }
+
+    .mobile-dropdown-menu.active {
+        transform: translateX(0);
+    }
+
+    .mobile-dropdown-item {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    .mobile-dropdown-item:hover {
+        background-color: rgba(102, 126, 234, 0.1);
+    }
+
+    .mobile-dropdown-item i {
+        font-size: 16px;
+        color: #667eea;
+    }
+
+    /* Contacts Button */
+    .contacts-toggle {
+        display: flex;
+        position: fixed;
+        bottom: 80px; /* Position above the chat input area */
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(118, 75, 162, 0.9), rgba(102, 126, 234, 0.9));
+        color: white;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+        /* Ensure the button is visible */
+        opacity: 1 !important;
+        visibility: visible !important;
+        /* Add a pulsing animation to draw attention */
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        50% {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+        }
+        100% {
+            transform: scale(1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    .contacts-toggle:hover, .contacts-toggle:active, .contacts-toggle:focus {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, rgba(118, 75, 162, 1), rgba(102, 126, 234, 1));
+    }
+
+    .contacts-toggle i {
+        font-size: 24px;
+    }
+
+    /* Hide sidebar by default on mobile */
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 85%;
+        height: 100%;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Show sidebar when active class is added */
+    .sidebar.active {
+        left: 0;
+    }
+
+    /* Add overlay when sidebar is active */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* Make chat window take full width and adjust for mobile header */
+    .chat-window {
+        width: 100%;
+        padding-top: 50px; /* Space for mobile header */
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Adjust chat header for mobile */
+    .chat-header {
+        display: none; /* Hide the original chat header */
+    }
+
+    /* Adjust chat messages area for mobile */
+    .chat-messages {
+        padding: 15px;
+        height: calc(100vh - 120px); /* Adjust for header and input area */
+        overflow-y: auto;
+        flex: 1;
+        padding-bottom: 70px; /* Extra padding at bottom to ensure messages aren't hidden behind input area */
+    }
+
+    /* Adjust message bubbles for mobile */
+    .message {
+        max-width: 80%;
+    }
+
+    /* Adjust chat input area for mobile */
+    .chat-input-area {
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+
+    /* Adjust emoji picker position for mobile */
+    .emoji-picker-container {
+        bottom: 70px;
+        left: 0;
+        width: 100%;
+        border-radius: 15px 15px 0 0;
+    }
+
+    /* Adjust file preview container for mobile */
+    .file-preview-container {
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 15px 15px 0 0;
+    }
+}
+
+/* Tablet Specific Styles */
+@media (min-width: 768px) and (max-width: 992px) {
+    /* Adjust sidebar width for tablets */
+    .sidebar {
+        width: 320px;
+    }
+
+    /* Adjust message bubbles for tablets */
+    .message {
+        max-width: 75%;
+    }
+
+    /* Adjust emoji picker for tablets */
+    .emoji-picker-container {
+        width: 350px;
+        left: 10px;
+    }
+
+    /* Adjust file preview for tablets */
+    .file-preview-container {
+        width: 80%;
+        left: 10%;
+        border-radius: 15px;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    /* Further reduce padding for very small screens */
+    .chat-header, 
+    .chat-input-area,
+    .chat-messages {
+        padding: 8px;
+    }
+
+    /* Make message bubbles wider on small screens */
+    .message {
+        max-width: 90%;
+    }
+
+    /* Adjust input area for small screens */
+    .message-input-container {
+        margin: 0 5px;
+    }
+
+    /* Smaller buttons on mobile */
+    .icon-btn {
+        padding: 6px;
+    }
+
+    /* Adjust welcome screen for small screens */
+    .welcome-content {
+        padding: 15px;
+    }
+
+    .welcome-title {
+        font-size: 20px;
+    }
+
+    .welcome-subtitle {
+        font-size: 14px;
+    }
+
+    .welcome-features {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Theme Popup Styles */
+.theme-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+}
+
+.theme-popup-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 80%;
+    max-width: 300px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.theme-popup h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.theme-options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.theme-option {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, rgba(118, 75, 162, 0.7), rgba(102, 126, 234, 0.7));
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-close {
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-close:hover {
+    background-color: #eee;
+}
+
+/* Dark theme for theme popup */
+body.dark-theme .theme-popup-content {
+    background-color: #222;
+    color: white;
+}
+
+body.dark-theme .theme-popup h3 {
+    color: white;
+}
+
+body.dark-theme .theme-close {
+    background-color: #333;
+    color: white;
+    border-color: #444;
+}
+
+body.dark-theme .theme-close:hover {
+    background-color: #444;
+}
+
+/* Neon theme for theme popup */
+body.neon-theme .theme-popup-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #08f7fe;
+    border: 1px solid #08f7fe;
+    box-shadow: 0 0 10px #08f7fe, 0 0 20px rgba(8, 247, 254, 0.5);
+}
+
+body.neon-theme .theme-popup h3 {
+    color: #08f7fe;
+    text-shadow: 0 0 5px #08f7fe;
+}
+
+body.neon-theme .theme-option {
+    background: black;
+    border: 1px solid #08f7fe;
+    color: #08f7fe;
+    text-shadow: 0 0 5px #08f7fe;
+    box-shadow: 0 0 5px #08f7fe;
+}
+
+body.neon-theme .theme-close {
+    background-color: black;
+    color: #08f7fe;
+    border: 1px solid #08f7fe;
+    text-shadow: 0 0 5px #08f7fe;
+    box-shadow: 0 0 5px #08f7fe;
+}
+
+/* Landscape Mode for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .chat-container {
+        height: 100vh;
+    }
+
+    .chat-messages {
+        max-height: calc(100vh - 110px);
+    }
+
+    .welcome-features {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sidebar {
+        overflow-y: auto;
+    }
+}
+
+/* Fix for iOS Safari viewport height issue */
+@supports (-webkit-touch-callout: none) {
+    .chat-container {
+        height: -webkit-fill-available;
+    }
+}
+
+/* Mobile UI Animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.mobile-header {
+    animation: slideInRight 0.3s ease;
+}
+
+.contacts-toggle {
+    animation: fadeIn 0.5s ease;
+}
+
+.sidebar.active {
+    animation: slideInLeft 0.3s ease;
+}
+
+.mobile-dropdown-menu.active {
+    animation: slideInRight 0.3s ease;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Sakha Sampark</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Theme toggle buttons moved outside the form container -->
+    <div class="theme-toggle-container">
+        <button class="theme-btn light-theme-btn" id="lightThemeBtn" title="Light Theme">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button class="theme-btn dark-theme-btn" id="darkThemeBtn" title="Dark Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="theme-btn neon-theme-btn" id="neonThemeBtn" title="Neon Theme">
+            <i class="fas fa-bolt"></i>
+        </button>
+    </div>
+    
+    <div class="container">
+        <div class="form-container">
+            <h1>Sign Up</h1>
+            <form id="signupForm">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" id="name" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <div class="error-message" id="signupError"></div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <p class="switch-form">Already have an account? <a href="index.html">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+    
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+    
+    <!-- Auth Script -->
+    <script src="auth.js"></script>
+    
+    <!-- Background Animation Script -->
+    <script src="background.js"></script>
+</body>
+</html>

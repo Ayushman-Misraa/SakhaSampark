@@ -1,0 +1,1243 @@
+/* Dynamic Background Animations */
+
+/* Base styles for animated backgrounds */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Floating Shapes */
+.floating-shape {
+    position: absolute;
+    opacity: 0.15;
+    filter: blur(3px);
+    pointer-events: none;
+    animation: floatAnimation 15s infinite ease-in-out;
+}
+
+.floating-shape.circle {
+    border-radius: 50%;
+}
+
+.floating-shape.triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.floating-shape.square {
+    border-radius: 10%;
+}
+
+.floating-shape.pentagon {
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.floating-shape.hexagon {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+/* Animated Lines */
+.animated-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: lineSweep 8s infinite ease-in-out;
+}
+
+/* Animated Dots */
+.animated-dot {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: pulseDot 4s infinite ease-in-out;
+}
+
+/* Bottom Glow Effect */
+.bottom-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    transform: translateY(50%);
+    filter: blur(40px);
+    opacity: 0.5;
+    animation: glowPulse 10s infinite ease-in-out;
+}
+
+body.dark-theme .login-background .bottom-glow {
+    background: radial-gradient(ellipse at center, rgba(43, 50, 178, 0.3) 0%, transparent 70%);
+}
+
+body.dark-theme .signup-background .bottom-glow {
+    background: radial-gradient(ellipse at center, rgba(75, 101, 132, 0.3) 0%, transparent 70%);
+}
+
+body.neon-theme .login-background .bottom-glow {
+    background: radial-gradient(ellipse at center, rgba(8, 247, 254, 0.3) 0%, transparent 70%);
+    box-shadow: 0 0 50px rgba(8, 247, 254, 0.2);
+    animation: glowPulseNeon 8s infinite ease-in-out;
+}
+
+body.neon-theme .signup-background .bottom-glow {
+    background: radial-gradient(ellipse at center, rgba(254, 83, 187, 0.3) 0%, transparent 70%);
+    box-shadow: 0 0 50px rgba(254, 83, 187, 0.2);
+    animation: glowPulseNeon 8s infinite ease-in-out;
+}
+
+/* Animated Gradient Orbs */
+.gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    mix-blend-mode: screen;
+    animation: orbFloat 25s infinite ease-in-out;
+}
+
+/* Animated Stars */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+/* Animated Meteor */
+.meteor {
+    position: absolute;
+    width: 300px;
+    height: 1px;
+    transform-origin: right;
+    background: linear-gradient(90deg, transparent, white);
+    animation: meteor 6s linear infinite;
+    opacity: 0;
+}
+
+/* Animated Aurora */
+.aurora {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(0, 255, 255, 0.1) 0%, transparent 80%);
+    filter: blur(30px);
+    transform-origin: bottom;
+    animation: aurora 15s ease infinite;
+    opacity: 0.3;
+}
+
+/* Animated Fireflies */
+.firefly {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 150, 0.8);
+    box-shadow: 0 0 5px rgba(255, 255, 150, 0.8);
+    animation: firefly 10s linear infinite;
+}
+
+/* Animated Fog */
+.fog {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(255, 255, 255, 0.05) 100%);
+    opacity: 0.3;
+    filter: blur(40px);
+    animation: fog 20s ease infinite;
+}
+
+/* Login Page Background (Cool Tones) */
+.login-background {
+    background: linear-gradient(-45deg, #2b5876, #4e4376, #2b32b2, #1488cc);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+}
+
+.login-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(76, 0, 255, 0.1) 0%, rgba(76, 0, 255, 0) 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 174, 255, 0.1) 0%, rgba(0, 174, 255, 0) 50%);
+    animation: pulseOpacity 8s ease-in-out infinite alternate;
+}
+
+.login-background .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.4;
+    animation: blobFloat 20s infinite ease-in-out;
+}
+
+.login-background .blob:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    background: #4e4376;
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.login-background .blob:nth-child(2) {
+    width: 350px;
+    height: 350px;
+    background: #2b32b2;
+    bottom: 10%;
+    right: 15%;
+    animation-delay: -5s;
+}
+
+.login-background .blob:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    background: #1488cc;
+    bottom: 30%;
+    left: 30%;
+    animation-delay: -10s;
+}
+
+/* Signup Page Background (Warm Tones) */
+.signup-background {
+    background: linear-gradient(-45deg, #ff9966, #ff5e62, #ff8c69, #ff7eb3);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+}
+
+.signup-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(255, 123, 0, 0.1) 0%, rgba(255, 123, 0, 0) 50%),
+                radial-gradient(circle at 70% 60%, rgba(255, 0, 128, 0.1) 0%, rgba(255, 0, 128, 0) 50%);
+    animation: pulseOpacity 8s ease-in-out infinite alternate;
+}
+
+.signup-background .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.4;
+    animation: blobFloat 20s infinite ease-in-out;
+}
+
+.signup-background .blob:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    background: #ff5e62;
+    top: 20%;
+    right: 15%;
+    animation-delay: -3s;
+}
+
+.signup-background .blob:nth-child(2) {
+    width: 350px;
+    height: 350px;
+    background: #ff9966;
+    bottom: 10%;
+    left: 15%;
+    animation-delay: -8s;
+}
+
+.signup-background .blob:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    background: #ff7eb3;
+    top: 40%;
+    left: 25%;
+    animation-delay: -13s;
+}
+
+/* Dashboard Background (Neutral Professional) */
+.dashboard-background {
+    background: linear-gradient(-45deg, #3f4c6b, #606c88, #3f4c6b, #606c88);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+}
+
+.dashboard-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(63, 76, 107, 0.1) 0%, rgba(63, 76, 107, 0) 50%),
+                radial-gradient(circle at 70% 60%, rgba(96, 108, 136, 0.1) 0%, rgba(96, 108, 136, 0) 50%);
+    animation: pulseOpacity 8s ease-in-out infinite alternate;
+}
+
+.dashboard-background .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    animation: blobFloat 20s infinite ease-in-out;
+}
+
+.dashboard-background .blob:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    background: #3f4c6b;
+    top: 20%;
+    left: 15%;
+    animation-delay: -2s;
+}
+
+.dashboard-background .blob:nth-child(2) {
+    width: 350px;
+    height: 350px;
+    background: #606c88;
+    bottom: 10%;
+    right: 15%;
+    animation-delay: -7s;
+}
+
+.dashboard-background .blob:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    background: #4a5775;
+    bottom: 30%;
+    left: 30%;
+    animation-delay: -12s;
+}
+
+/* Animations */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes pulseOpacity {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.4; }
+}
+
+@keyframes blobFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(20px) rotate(-5deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes lineSweep {
+    0% {
+        width: 0;
+        left: -10%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        width: 80%;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        width: 0;
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes pulseDot {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 0.2;
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateY(50%) scaleX(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translateY(50%) scaleX(1.2);
+    }
+}
+
+@keyframes glowPulseNeon {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateY(50%) scaleX(1);
+        filter: blur(40px);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateY(50%) scaleX(1.2);
+        filter: blur(60px);
+    }
+}
+
+@keyframes orbFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translate(50px, -30px) scale(1.2);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(100px, 0) scale(0.8);
+        opacity: 0.3;
+    }
+    75% {
+        transform: translate(50px, 30px) scale(1.1);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes meteor {
+    0% {
+        opacity: 0;
+        transform: translateX(0) translateY(0) rotate(315deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(-500px) translateY(500px) rotate(315deg);
+    }
+    21%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes aurora {
+    0%, 100% {
+        transform: scaleX(1.5) scaleY(1) translateX(-10%);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scaleX(2) scaleY(1.5) translateX(10%);
+        opacity: 0.5;
+    }
+}
+
+@keyframes firefly {
+    0% {
+        opacity: 0;
+        transform: translateX(0) translateY(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(100px) translateY(-100px);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(200px) translateY(-200px);
+    }
+}
+
+@keyframes fog {
+    0%, 100% {
+        transform: translateX(-5%) translateY(0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateX(5%) translateY(0);
+        opacity: 0.5;
+    }
+}
+
+@keyframes floatingForm {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Enhanced Glassmorphism for UI Elements */
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Theme Transition */
+body {
+    transition: background 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: background;
+}
+
+/* Hardware acceleration for all animated elements */
+.animated-background, 
+.floating-shape, 
+.animated-line, 
+.animated-dot, 
+.bottom-glow, 
+.gradient-orb, 
+.star, 
+.meteor, 
+.aurora, 
+.firefly, 
+.fog, 
+.blob,
+.dashboard,
+.form-container,
+.glassmorphism {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
+}
+
+/* Theme Overrides */
+body.dark-theme .login-background {
+    background: linear-gradient(-45deg, #121212, #2d3436, #1e272e, #0f0f0f);
+    background-size: 400% 400%;
+}
+
+body.dark-theme .signup-background {
+    background: linear-gradient(-45deg, #2d3436, #4b6584, #3d3d3d, #2c2c2c);
+    background-size: 400% 400%;
+}
+
+body.dark-theme .dashboard-background {
+    background: linear-gradient(-45deg, #0f0f0f, #1e1e1e, #2c2c2c, #0f0f0f);
+    background-size: 400% 400%;
+}
+
+body.neon-theme .login-background {
+    background: linear-gradient(-45deg, #000000, #1D0656, #0C0032, #190061);
+    background-size: 400% 400%;
+}
+
+body.neon-theme .signup-background {
+    background: linear-gradient(-45deg, #000000, #5D0979, #900048, #190061);
+    background-size: 400% 400%;
+}
+
+body.neon-theme .dashboard-background {
+    background: linear-gradient(-45deg, #000000, #0C0032, #240090, #000000);
+    background-size: 400% 400%;
+}
+
+/* Theme-specific floating shapes */
+.login-background .floating-shape {
+    background-color: rgba(43, 50, 178, 0.3);
+}
+
+.signup-background .floating-shape {
+    background-color: rgba(255, 94, 98, 0.3);
+}
+
+.dashboard-background .floating-shape {
+    background-color: rgba(63, 76, 107, 0.3);
+}
+
+body.dark-theme .login-background .floating-shape {
+    background-color: rgba(45, 52, 54, 0.3);
+}
+
+body.dark-theme .signup-background .floating-shape {
+    background-color: rgba(75, 101, 132, 0.3);
+}
+
+body.dark-theme .dashboard-background .floating-shape {
+    background-color: rgba(30, 30, 30, 0.3);
+}
+
+body.neon-theme .login-background .floating-shape {
+    background-color: rgba(8, 247, 254, 0.2);
+    box-shadow: 0 0 15px rgba(8, 247, 254, 0.3);
+}
+
+body.neon-theme .signup-background .floating-shape {
+    background-color: rgba(254, 83, 187, 0.2);
+    box-shadow: 0 0 15px rgba(254, 83, 187, 0.3);
+}
+
+body.neon-theme .dashboard-background .floating-shape {
+    background-color: rgba(9, 251, 211, 0.2);
+    box-shadow: 0 0 15px rgba(9, 251, 211, 0.3);
+}
+
+/* Theme-specific animated lines */
+.login-background .animated-line {
+    background: linear-gradient(90deg, transparent, rgba(43, 50, 178, 0.3), transparent);
+}
+
+.signup-background .animated-line {
+    background: linear-gradient(90deg, transparent, rgba(255, 94, 98, 0.3), transparent);
+}
+
+.dashboard-background .animated-line {
+    background: linear-gradient(90deg, transparent, rgba(63, 76, 107, 0.3), transparent);
+}
+
+body.dark-theme .animated-line {
+    background: linear-gradient(90deg, transparent, rgba(75, 101, 132, 0.3), transparent);
+}
+
+body.neon-theme .login-background .animated-line {
+    background: linear-gradient(90deg, transparent, rgba(8, 247, 254, 0.5), transparent);
+    height: 2px;
+    box-shadow: 0 0 10px rgba(8, 247, 254, 0.5);
+}
+
+body.neon-theme .signup-background .animated-line {
+    background: linear-gradient(90deg, transparent, rgba(254, 83, 187, 0.5), transparent);
+    height: 2px;
+    box-shadow: 0 0 10px rgba(254, 83, 187, 0.5);
+}
+
+body.neon-theme .dashboard-background .animated-line {
+    background: linear-gradient(90deg, transparent, rgba(9, 251, 211, 0.5), transparent);
+    height: 2px;
+    box-shadow: 0 0 10px rgba(9, 251, 211, 0.5);
+}
+
+/* Theme-specific animated dots */
+.login-background .animated-dot {
+    background-color: rgba(43, 50, 178, 0.5);
+}
+
+.signup-background .animated-dot {
+    background-color: rgba(255, 94, 98, 0.5);
+}
+
+.dashboard-background .animated-dot {
+    background-color: rgba(63, 76, 107, 0.5);
+}
+
+body.dark-theme .animated-dot {
+    background-color: rgba(75, 101, 132, 0.5);
+}
+
+body.neon-theme .login-background .animated-dot {
+    background-color: rgba(8, 247, 254, 0.8);
+    box-shadow: 0 0 5px rgba(8, 247, 254, 0.8);
+}
+
+body.neon-theme .signup-background .animated-dot {
+    background-color: rgba(254, 83, 187, 0.8);
+    box-shadow: 0 0 5px rgba(254, 83, 187, 0.8);
+}
+
+body.neon-theme .dashboard-background .animated-dot {
+    background-color: rgba(9, 251, 211, 0.8);
+    box-shadow: 0 0 5px rgba(9, 251, 211, 0.8);
+}
+
+/* Theme-specific gradient orbs */
+.login-background .gradient-orb:nth-child(odd) {
+    background: radial-gradient(circle, rgba(43, 50, 178, 0.5), rgba(20, 136, 204, 0.2));
+}
+
+.login-background .gradient-orb:nth-child(even) {
+    background: radial-gradient(circle, rgba(20, 136, 204, 0.5), rgba(43, 50, 178, 0.2));
+}
+
+.login-background .gradient-orb:nth-child(5) {
+    background: radial-gradient(circle, rgba(76, 0, 255, 0.3), rgba(0, 174, 255, 0.1));
+}
+
+.signup-background .gradient-orb:nth-child(odd) {
+    background: radial-gradient(circle, rgba(255, 94, 98, 0.5), rgba(255, 158, 102, 0.2));
+}
+
+.signup-background .gradient-orb:nth-child(even) {
+    background: radial-gradient(circle, rgba(255, 158, 102, 0.5), rgba(255, 94, 98, 0.2));
+}
+
+.signup-background .gradient-orb:nth-child(5) {
+    background: radial-gradient(circle, rgba(255, 123, 0, 0.3), rgba(255, 0, 128, 0.1));
+}
+
+body.dark-theme .gradient-orb {
+    opacity: 0.2 !important;
+}
+
+body.neon-theme .login-background .gradient-orb:nth-child(1),
+body.neon-theme .login-background .gradient-orb:nth-child(4) {
+    background: radial-gradient(circle, rgba(8, 247, 254, 0.5), rgba(0, 0, 0, 0));
+    box-shadow: 0 0 30px rgba(8, 247, 254, 0.5);
+}
+
+body.neon-theme .login-background .gradient-orb:nth-child(2),
+body.neon-theme .login-background .gradient-orb:nth-child(5) {
+    background: radial-gradient(circle, rgba(254, 83, 187, 0.5), rgba(0, 0, 0, 0));
+    box-shadow: 0 0 30px rgba(254, 83, 187, 0.5);
+}
+
+body.neon-theme .login-background .gradient-orb:nth-child(3) {
+    background: radial-gradient(circle, rgba(9, 251, 211, 0.5), rgba(0, 0, 0, 0));
+    box-shadow: 0 0 30px rgba(9, 251, 211, 0.5);
+}
+
+body.neon-theme .signup-background .gradient-orb:nth-child(1),
+body.neon-theme .signup-background .gradient-orb:nth-child(4) {
+    background: radial-gradient(circle, rgba(245, 211, 0, 0.5), rgba(0, 0, 0, 0));
+    box-shadow: 0 0 30px rgba(245, 211, 0, 0.5);
+}
+
+body.neon-theme .signup-background .gradient-orb:nth-child(2),
+body.neon-theme .signup-background .gradient-orb:nth-child(5) {
+    background: radial-gradient(circle, rgba(255, 32, 121, 0.5), rgba(0, 0, 0, 0));
+    box-shadow: 0 0 30px rgba(255, 32, 121, 0.5);
+}
+
+body.neon-theme .signup-background .gradient-orb:nth-child(3) {
+    background: radial-gradient(circle, rgba(113, 34, 250, 0.5), rgba(0, 0, 0, 0));
+    box-shadow: 0 0 30px rgba(113, 34, 250, 0.5);
+}
+
+/* Theme-specific stars */
+body.dark-theme .star {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+body.neon-theme .login-background .star {
+    background-color: rgba(8, 247, 254, 0.8);
+    box-shadow: 0 0 3px rgba(8, 247, 254, 0.8);
+}
+
+body.neon-theme .signup-background .star {
+    background-color: rgba(254, 83, 187, 0.8);
+    box-shadow: 0 0 3px rgba(254, 83, 187, 0.8);
+}
+
+body.neon-theme .dashboard-background .star {
+    background-color: rgba(9, 251, 211, 0.8);
+    box-shadow: 0 0 3px rgba(9, 251, 211, 0.8);
+}
+
+/* Blob colors for dark theme */
+body.dark-theme .login-background .blob:nth-child(1) {
+    background: #2d3436;
+}
+
+body.dark-theme .login-background .blob:nth-child(2) {
+    background: #1e272e;
+}
+
+body.dark-theme .login-background .blob:nth-child(3) {
+    background: #0f0f0f;
+}
+
+body.dark-theme .signup-background .blob:nth-child(1) {
+    background: #4b6584;
+}
+
+body.dark-theme .signup-background .blob:nth-child(2) {
+    background: #3d3d3d;
+}
+
+body.dark-theme .signup-background .blob:nth-child(3) {
+    background: #2c2c2c;
+}
+
+/* Blob colors for neon theme */
+body.neon-theme .login-background .blob:nth-child(1) {
+    background: #08F7FE;
+    opacity: 0.3;
+    filter: blur(80px);
+}
+
+body.neon-theme .login-background .blob:nth-child(2) {
+    background: #FE53BB;
+    opacity: 0.3;
+    filter: blur(80px);
+}
+
+body.neon-theme .login-background .blob:nth-child(3) {
+    background: #09FBD3;
+    opacity: 0.3;
+    filter: blur(80px);
+}
+
+body.neon-theme .signup-background .blob:nth-child(1) {
+    background: #F5D300;
+    opacity: 0.3;
+    filter: blur(80px);
+}
+
+body.neon-theme .signup-background .blob:nth-child(2) {
+    background: #FF2079;
+    opacity: 0.3;
+    filter: blur(80px);
+}
+
+body.neon-theme .signup-background .blob:nth-child(3) {
+    background: #7122FA;
+    opacity: 0.3;
+    filter: blur(80px);
+}
+
+/* Enhanced Form Container */
+.form-container {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.5s ease !important;
+    animation: floatingForm 6s ease-in-out infinite !important;
+    transform-style: preserve-3d !important;
+    perspective: 1000px !important;
+}
+
+.form-container:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
+    animation-play-state: paused !important;
+}
+
+/* 3D hover effect for form container */
+.form-container::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    opacity: 0 !important;
+    transition: opacity 0.5s ease !important;
+}
+
+.form-container:hover::before {
+    opacity: 1 !important;
+}
+
+/* Dark theme form container */
+body.dark-theme .form-container {
+    background: rgba(30, 30, 30, 0.7) !important;
+    border: 1px solid rgba(50, 50, 50, 0.5) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Neon theme form container */
+body.neon-theme .form-container {
+    background: rgba(10, 10, 20, 0.7) !important;
+    border: 1px solid rgba(8, 247, 254, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(8, 247, 254, 0.2), 0 0 20px rgba(254, 83, 187, 0.2) !important;
+}
+
+/* Enhanced Input Fields */
+.input-group {
+    margin-bottom: 25px !important;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    transition: all 0.3s ease !important;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1) !important;
+    transform: translateX(5px) !important;
+}
+
+/* Dark Theme Input Fields */
+body.dark-theme input {
+    background: rgba(30, 30, 30, 0.6) !important;
+    border: 1px solid rgba(60, 60, 60, 0.5) !important;
+}
+
+body.dark-theme input:focus {
+    background: rgba(40, 40, 40, 0.8) !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-theme input::placeholder {
+    color: rgba(200, 200, 200, 0.7) !important;
+}
+
+/* Neon Theme Input Fields */
+body.neon-theme input {
+    background: rgba(10, 10, 20, 0.6) !important;
+    border: 1px solid rgba(8, 247, 254, 0.3) !important;
+    box-shadow: 0 0 5px rgba(8, 247, 254, 0.2) !important;
+}
+
+body.neon-theme input:focus {
+    background: rgba(15, 15, 30, 0.8) !important;
+    border: 1px solid rgba(254, 83, 187, 0.5) !important;
+    box-shadow: 0 0 15px rgba(254, 83, 187, 0.3) !important;
+}
+
+/* Enhanced Buttons */
+.btn {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+.btn::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+    transition: 0.5s !important;
+}
+
+.btn:hover::before {
+    left: 100% !important;
+}
+
+/* Dark Theme Buttons */
+body.dark-theme .btn {
+    background: linear-gradient(to right, #2d3436, #4b6584) !important;
+    border: 1px solid rgba(75, 101, 132, 0.5) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-theme .btn:hover {
+    background: linear-gradient(to right, #4b6584, #2d3436) !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-theme .btn::before {
+    background: linear-gradient(90deg, transparent, rgba(100, 100, 100, 0.2), transparent) !important;
+}
+
+/* Neon Theme Buttons */
+body.neon-theme .btn {
+    background: linear-gradient(to right, #000000, #1D0656) !important;
+    border: 1px solid rgba(8, 247, 254, 0.5) !important;
+    box-shadow: 0 8px 20px rgba(8, 247, 254, 0.2), 0 0 10px rgba(254, 83, 187, 0.2) !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
+}
+
+body.neon-theme .btn:hover {
+    background: linear-gradient(to right, #1D0656, #000000) !important;
+    box-shadow: 0 8px 25px rgba(8, 247, 254, 0.3), 0 0 15px rgba(254, 83, 187, 0.3) !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7) !important;
+}
+
+body.neon-theme .btn::before {
+    background: linear-gradient(90deg, transparent, rgba(8, 247, 254, 0.3), transparent) !important;
+}
+
+/* Logout Button Specific Styles */
+body.dark-theme .logout-btn {
+    background: linear-gradient(to right, #e74c3c, #c0392b) !important;
+}
+
+body.dark-theme .logout-btn:hover {
+    background: linear-gradient(to right, #c0392b, #e74c3c) !important;
+}
+
+body.neon-theme .logout-btn {
+    background: linear-gradient(to right, #FF2079, #E500A4) !important;
+    border: 1px solid rgba(255, 32, 121, 0.5) !important;
+    box-shadow: 0 8px 20px rgba(255, 32, 121, 0.2) !important;
+}
+
+body.neon-theme .logout-btn:hover {
+    background: linear-gradient(to right, #E500A4, #FF2079) !important;
+    box-shadow: 0 8px 25px rgba(255, 32, 121, 0.3) !important;
+}
+
+/* Text Colors */
+h1, .switch-form, .input-group i {
+    color: white !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.switch-form a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: bold !important;
+}
+
+.switch-form a:hover {
+    color: white !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Dark Theme Text Colors */
+body.dark-theme h1 {
+    color: #f0f0f0 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-theme .input-group i {
+    color: #4b6584 !important;
+}
+
+body.dark-theme .switch-form {
+    color: #cccccc !important;
+}
+
+body.dark-theme .switch-form a {
+    color: #4b6584 !important;
+}
+
+body.dark-theme .switch-form a:hover {
+    color: #f0f0f0 !important;
+    text-shadow: 0 0 10px rgba(75, 101, 132, 0.5) !important;
+}
+
+/* Neon Theme Text Colors */
+body.neon-theme h1 {
+    color: #08F7FE !important;
+    text-shadow: 0 0 10px rgba(8, 247, 254, 0.5), 0 0 20px rgba(8, 247, 254, 0.3) !important;
+}
+
+body.neon-theme .input-group i {
+    color: #FE53BB !important;
+    text-shadow: 0 0 5px rgba(254, 83, 187, 0.5) !important;
+}
+
+body.neon-theme .switch-form {
+    color: #F5D300 !important;
+    text-shadow: 0 0 5px rgba(245, 211, 0, 0.3) !important;
+}
+
+body.neon-theme .switch-form a {
+    color: #08F7FE !important;
+    text-shadow: 0 0 5px rgba(8, 247, 254, 0.5) !important;
+}
+
+body.neon-theme .switch-form a:hover {
+    color: #FE53BB !important;
+    text-shadow: 0 0 10px rgba(254, 83, 187, 0.5) !important;
+}
+
+/* User info text in dashboard */
+body.dark-theme .user-info h2 {
+    color: #f0f0f0 !important;
+}
+
+body.dark-theme .user-info i {
+    color: #4b6584 !important;
+}
+
+body.neon-theme .user-info h2 {
+    color: #08F7FE !important;
+    text-shadow: 0 0 10px rgba(8, 247, 254, 0.5) !important;
+}
+
+body.neon-theme .user-info i {
+    color: #FE53BB !important;
+    text-shadow: 0 0 10px rgba(254, 83, 187, 0.5) !important;
+}
+
+/* Theme Toggle Container */
+.theme-toggle-container {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dark Theme Toggle Container */
+body.dark-theme .theme-toggle-container {
+    background: rgba(30, 30, 30, 0.7) !important;
+    border: 1px solid rgba(60, 60, 60, 0.5) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Neon Theme Toggle Container */
+body.neon-theme .theme-toggle-container {
+    background: rgba(10, 10, 20, 0.7) !important;
+    border: 1px solid rgba(8, 247, 254, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(8, 247, 254, 0.2), 0 0 20px rgba(254, 83, 187, 0.2) !important;
+}
+
+/* Theme Button Active States for Different Themes */
+body.dark-theme .light-theme-btn {
+    box-shadow: none !important;
+    transform: scale(1) !important;
+    opacity: 0.5 !important;
+}
+
+body.dark-theme .dark-theme-btn {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3) !important;
+    transform: scale(1.1) !important;
+    opacity: 1 !important;
+}
+
+body.dark-theme .neon-theme-btn {
+    box-shadow: none !important;
+    transform: scale(1) !important;
+    opacity: 0.5 !important;
+}
+
+body.neon-theme .light-theme-btn {
+    box-shadow: none !important;
+    transform: scale(1) !important;
+    opacity: 0.5 !important;
+}
+
+body.neon-theme .dark-theme-btn {
+    box-shadow: none !important;
+    transform: scale(1) !important;
+    opacity: 0.5 !important;
+}
+
+body.neon-theme .neon-theme-btn {
+    box-shadow: 0 0 0 2px rgba(8, 247, 254, 0.5), 0 0 15px rgba(8, 247, 254, 0.5) !important;
+    transform: scale(1.1) !important;
+    opacity: 1 !important;
+}
+
+body:not(.dark-theme):not(.neon-theme) .dark-theme-btn,
+body:not(.dark-theme):not(.neon-theme) .neon-theme-btn {
+    box-shadow: none !important;
+    transform: scale(1) !important;
+    opacity: 0.5 !important;
+}
+
+/* Dashboard Specific Styles */
+.dashboard {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    animation: floatingForm 8s ease-in-out infinite !important;
+    transform-style: preserve-3d !important;
+    perspective: 1000px !important;
+}
+
+.dashboard:hover {
+    animation-play-state: paused !important;
+}
+
+/* 3D hover effect for dashboard */
+.dashboard::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    opacity: 0 !important;
+    transition: opacity 0.5s ease !important;
+}
+
+.dashboard:hover::before {
+    opacity: 1 !important;
+}
+
+.user-info {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s ease !important;
+    animation: floatingForm 5s ease-in-out infinite !important;
+    animation-delay: -2s !important;
+}
+
+.user-info:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+    animation-play-state: paused !important;
+}
+
+/* Error Message */
+.error-message {
+    color: rgba(255, 100, 100, 1) !important;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.3) !important;
+}

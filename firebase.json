@@ -1,0 +1,19 @@
+
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCy0Fq5S3Tg5B8EfZymZ1CLLTU_vHZSDCg",
+  authDomain: "sakhasampark-ddrm.firebaseapp.com",
+  databaseURL: "https://sakhasampark-ddrm-default-rtdb.firebaseio.com",
+  projectId: "sakhasampark-ddrm",
+  storageBucket: "sakhasampark-ddrm.firebasestorage.app",
+  messagingSenderId: "936102964745",
+  appId: "1:936102964745:web:9108449d3a3f3482b092d8",
+  measurementId: "G-NLBKKF58Q0"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);

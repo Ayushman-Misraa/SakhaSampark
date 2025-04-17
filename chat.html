@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chat - Sakha Sampark</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="chat-styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Emoji Picker Element -->
+    <script src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js" type="module"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/css/emoji-picker.css">
+</head>
+<body>
+    <!-- Theme toggle buttons -->
+    <div class="theme-toggle-container">
+        <button class="theme-btn light-theme-btn" id="lightThemeBtn" title="Light Theme">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button class="theme-btn dark-theme-btn" id="darkThemeBtn" title="Dark Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="theme-btn neon-theme-btn" id="neonThemeBtn" title="Neon Theme">
+            <i class="fas fa-bolt"></i>
+        </button>
+    </div>
+    
+    <div class="chat-container">
+        <!-- Sidebar - Contacts and Requests -->
+        <div class="sidebar">
+            <!-- User Profile Section -->
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="user-name" id="userDisplayName">Loading...</div>
+                <button id="logoutBtn" class="icon-btn" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+
+            <!-- Add Contact Section -->
+            <div class="add-contact-section">
+                <div class="input-group">
+                    <input type="text" id="peerIdInput" placeholder="Enter username (Peer ID)">
+                    <button id="sendRequestBtn" class="btn">
+                        <i class="fas fa-paper-plane"></i> Send Request
+                    </button>
+                </div>
+            </div>
+
+            <!-- Incoming Requests Section -->
+            <div class="requests-section">
+                <h3><i class="fas fa-bell"></i> Incoming Requests</h3>
+                <div class="requests-list" id="requestsList">
+                    <!-- Request items will be populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Contacts Section -->
+            <div class="contacts-section">
+                <h3><i class="fas fa-address-book"></i> Contacts</h3>
+                <div class="contacts-list" id="contactsList">
+                    <!-- Contact items will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Chat Window -->
+        <div class="chat-window">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-contact-info">
+                    <div class="contact-avatar">
+                        <i class="fas fa-user"></i>
+                        <span class="online-status"></span>
+                    </div>
+                    <div>
+                        <div class="contact-name" id="currentChatName">Select a contact</div>
+                        <div class="contact-status">Online</div>
+                    </div>
+                </div>
+                <div class="chat-actions">
+
+                    <button class="icon-btn hover-scale" title="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="dropdown">
+                        <button id="moreOptionsBtn" class="icon-btn hover-scale" title="More options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div id="moreOptionsMenu" class="dropdown-menu" style="display: none;">
+                            <div class="dropdown-item" id="clearChatBtn">
+                                <i class="fas fa-trash-alt"></i> Clear Chat
+                            </div>
+                            <div class="dropdown-item" id="unfriendBtn">
+                                <i class="fas fa-user-times"></i> Remove Contact
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Messages Area -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome Screen (shown when no contact is selected) -->
+                <div id="welcomeScreen" class="welcome-screen">
+                    <div class="welcome-content">
+                        <div class="welcome-logo">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <h1 class="welcome-title">Welcome to <span>Sakha Sampark</span></h1>
+                        <p class="welcome-subtitle">Secure Peer-to-Peer Communication</p>
+                        <div class="welcome-features">
+                            <div class="welcome-feature">
+                                <i class="fas fa-lock"></i>
+                                <span>End-to-End Encryption</span>
+                            </div>
+                            <div class="welcome-feature">
+                                <i class="fas fa-file-alt"></i>
+                                <span>File Sharing</span>
+                            </div>
+                            <div class="welcome-feature">
+                                <i class="far fa-smile"></i>
+                                <span>Emoji Support</span>
+                            </div>
+                        </div>
+                        <p class="welcome-instruction">Select a contact from the sidebar to start chatting</p>
+                    </div>
+                </div>
+                <!-- Messages will be populated dynamically -->
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="chat-input-area">
+                <button id="emojiBtn" class="icon-btn hover-scale" title="Emoji">
+                    <i class="far fa-smile"></i>
+                </button>
+                <div id="emojiPickerContainer" class="emoji-picker-container" style="display: none;"></div>
+                <button id="attachFileBtn" class="icon-btn hover-scale" title="Attach file">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <input type="file" id="fileInput" style="display: none;">
+
+                <div class="message-input-container">
+                    <input type="text" id="messageInput" placeholder="Type a message...">
+                </div>
+                <button id="sendMessageBtn" class="send-btn hover-scale" title="Send message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            
+            <!-- File Preview Container (Hidden by default) -->
+            <div id="filePreviewContainer" class="file-preview-container" style="display: none;">
+                <div class="file-preview-header">
+                    <span>File Attachment</span>
+                    <button id="closeFilePreviewBtn" class="icon-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="file-preview-content">
+                    <div id="filePreview" class="file-preview"></div>
+                    <div class="file-info">
+                        <span id="fileName" class="file-name"></span>
+                        <span id="fileSize" class="file-size"></span>
+                    </div>
+                </div>
+                <div id="fileTransferProgress" class="file-transfer-progress" style="display: none;">
+                    <div class="progress-bar">
+                        <div id="progressBar" class="progress-bar-fill"></div>
+                    </div>
+                    <span id="progressText">0%</span>
+                </div>
+                <div class="file-preview-actions">
+                    <button id="cancelFileBtn" class="btn cancel-btn">Cancel</button>
+                    <button id="sendFileBtn" class="btn send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+    
+    <!-- PeerJS Library -->
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+    
+    <!-- Background Animation Script -->
+    <script src="background.js"></script>
+    
+    <!-- Chat Script -->
+    <script src="chat.js"></script>
+    
+    <!-- Responsive Design Script -->
+    <script src="responsive.js"></script>
+    
+    <!-- Responsive Design Script -->
+    <script src="responsive.js"></script>
+    
+    <!-- Responsive Design Script -->
+    <script src="responsive.js"></script>
+</body>
+</html>
